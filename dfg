@@ -1,0 +1,94 @@
+var dragged = null;
+function allowDrop(ev) {
+ev.preventDefault();
+}
+
+
+
+function drag(ev) {
+ev.dataTransfer.setData("text", ev.target.id);
+dragged = ev.target;
+}
+
+
+function drop(ev) {
+ev.preventDefault();
+var data = ev.dataTransfer.getData("text");
+ev.target.appendChild(document.getElementById(data));
+dragged = null;
+}
+
+function Check(){
+var a = 0
+var colour1 = document.getElementById("div2");
+var colour2 = document.getElementById("div3");
+var colour3 = document.getElementById("div4");
+var colour4 = document.getElementById("div5");
+var colour5 = document.getElementById("div6");
+var drag = $("div2").find("span")
+$( "#div2 div").each( function( index, element) {
+   drag = $( element).attr("id");
+
+if (drag == 'drag2'){
+colour1.style.backgroundColor = "#0f0"
+a++
+}
+else{
+colour1.style.backgroundColor = "#f00"
+}});
+$( "#div3 div").each( function( index, element) {
+   drag = $( element).attr("id");
+
+if (drag == 'drag3'){
+colour2.style.backgroundColor = "#0f0"
+a++
+}
+else{
+colour2.style.backgroundColor = "#f00"
+}});
+
+$( "#div4 div").each( function( index, element) {
+   drag = $( element).attr("id");
+
+if (drag == 'drag4'){
+colour3.style.backgroundColor = "#0f0"
+a++
+}
+else{
+colour3.style.backgroundColor = "#f00"
+}});
+$( "#div5 div").each( function( index, element) {
+   drag = $( element).attr("id");
+
+if (drag == 'drag5'){
+colour4.style.backgroundColor = "#0f0"
+a++
+}
+else{
+colour4.style.backgroundColor = "#f00"
+}});
+$( "#div6 div").each( function( index, element) {
+   drag = $( element).attr("id");
+
+if (drag == 'drag6'){
+colour5.style.backgroundColor = "#0f0"
+a++
+}
+else{
+colour5.style.backgroundColor = "#f00"
+}});
+var b = 5*(a/5)
+alert(b)
+
+};
+
+  $(function() {
+    $('input#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+      b: b
+      }, function(data) {
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+  });
